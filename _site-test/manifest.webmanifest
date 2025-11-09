@@ -1,0 +1,19 @@
+{
+  "name": "IA Jurídica Hub",
+  "short_name": "IA Hub",
+  "description": "Portal colaborativo com materiais e prompts de IA aplicada ao direito.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f6f7fb",
+  "theme_color": "#1f285a",
+  "lang": "pt-BR",
+  "icons": [
+    {
+      "src": "/assets/favicon.svg",
+      "sizes": "128x128",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

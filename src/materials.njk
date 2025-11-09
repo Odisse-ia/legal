@@ -1,0 +1,41 @@
+---
+layout: layouts/base.njk
+title: Materiais
+description: Biblioteca de PDFs, slides e documentos que apoiam a adoção de IA no direito.
+permalink: /materials/
+eleventyNavigation:
+  key: Materiais
+  order: 2
+---
+
+{% set labels = {
+  talks: "Palestras",
+  workshops: "Workshops",
+  pdfs: "PDFs",
+  slides: "Slides",
+  docs: "Documentos"
+} %}
+
+<section class="section">
+  <div class="section-header">
+    <div>
+      <h3>📚 Biblioteca de materiais</h3>
+      <p>Envie seus arquivos para <code>materials/&lt;categoria&gt;</code> e eles aparecem automaticamente aqui. Aceitamos PDFs, PPTX, DOCX e afins.</p>
+    </div>
+  </div>
+
+  {% if materials.length %}
+    <div class="card-grid">
+      {% for item in materials %}
+        <article class="card">
+          <p class="eyebrow">{{ labels[item.type] or item.type }}</p>
+          <h4>{{ item.name }}</h4>
+          <p>Arquivo disponível na pasta <code>{{ item.type }}/</code>. Ideal para treinar equipes internas.</p>
+          <a class="cta" href="{{ item.url }}" target="_blank" rel="noopener">Abrir arquivo →</a>
+        </article>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p>Nenhum material cadastrado. Adicione arquivos em <code>materials/</code> e rode o build novamente.</p>
+  {% endif %}
+</section>

@@ -1,0 +1,38 @@
+---
+layout: layouts/base.njk
+title: Prompts Jurídicos
+description: Biblioteca colaborativa de prompts para automatizar peças e análises jurídicas.
+permalink: /prompts/
+eleventyNavigation:
+  key: Prompts
+  order: 3
+---
+
+<section class="section">
+  <div class="section-header">
+    <div>
+      <h3>🧠 Biblioteca de prompts</h3>
+      <p>Todos os arquivos `.md` adicionados à pasta <code>prompts/</code> viram cartões abaixo. Se quiser contribuir, acesse a aba “Envie seu prompt”.</p>
+    </div>
+    <a class="btn btn-primary" href="/submit/">💬 Enviar novo</a>
+  </div>
+
+  {% if prompts.length %}
+    <div class="card-grid">
+      {% for prompt in prompts %}
+        <article class="card">
+          <p class="eyebrow">{{ prompt.area or "Prompt jurídico" }}</p>
+          <h4>{{ prompt.title or prompt.name }}</h4>
+          <p>{{ prompt.description or "Abra o arquivo para ver instruções completas, parâmetros e exemplos de uso." }}</p>
+          <div class="tags">
+            {% if prompt.tone %}<span class="tag">{{ prompt.tone }}</span>{% endif %}
+            {% if prompt.format %}<span class="tag">{{ prompt.format }}</span>{% endif %}
+          </div>
+          <a class="cta" href="{{ prompt.url }}" target="_blank" rel="noopener">Abrir Markdown →</a>
+        </article>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p>Nenhum prompt cadastrado ainda. Adicione um arquivo `.md` em <code>prompts/</code> e ele aparecerá aqui automaticamente.</p>
+  {% endif %}
+</section>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% if title %}{{ title }} · IA Jurídica Hub{% else %}IA Jurídica Hub{% endif %}</title>
+    <meta name="description" content="{{ description or 'Curadoria de materiais e prompts para uso responsável de IA no direito.' }}" />
+    <meta property="og:title" content="{{ title or 'IA Jurídica Hub' }}" />
+    <meta property="og:description" content="{{ description or 'Curadoria de materiais e prompts para uso responsável de IA no direito.' }}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="{{ metadata.url or site.url or '' }}{{ page.url }}" />
+    <link rel="stylesheet" href="/assets/styles.css" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚖️</text></svg>" />
+  </head>
+  <body class="{{ pageClass or '' }}">
+    <div class="app">
+      <header class="site-header">
+        <div class="brand">
+          <div class="logo">⚖️</div>
+          <div>
+            <h1>IA Jurídica Hub</h1>
+            <p>IA responsável aplicada ao direito</p>
+          </div>
+        </div>
+        {% set nav = collections.all | eleventyNavigation %}
+        {% if nav.length %}
+        <nav>
+          <ul class="nav-list">
+            {% for entry in nav %}
+              <li class="{% if entry.url == page.url %}is-active{% endif %}">
+                <a href="{{ entry.url }}">{{ entry.title or entry.key }}</a>
+              </li>
+            {% endfor %}
+          </ul>
+        </nav>
+        {% endif %}
+      </header>
+
+      <main>
+        {{ content | safe }}
+      </main>
+
+      <footer class="site-footer">
+        <span>© 2025 IA Jurídica Hub</span>
+        <span>Feito com Eleventy + ❤️ jurídico</span>
+      </footer>
+    </div>
+  </body>
+</html>
